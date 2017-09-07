@@ -1,0 +1,7 @@
+<h1>Créer sujet de discussion</h1>
+
+<%= simple_form_for @topic, url: "" do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
+<% end %>

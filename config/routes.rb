@@ -4,6 +4,15 @@ Rails.application.routes.draw do
   get "about" => "pages#about"
   get "contact" => "pages#contact"
   get "profile" => "users#profile"
-  get "topics/new" => "topics#new"
-  post "topics" => "topics#create"
+
+  # Topics
+  resources :topics
 end
+=begin
+           POST   /topics(.:format)          topics#create
+ new_topic GET    /topics/new(.:format)      topics#new
+edit_topic GET    /topics/:id/edit(.:format) topics#edit
+     topic GET    /topics/:id(.:format)      topics#show
+           PATCH  /topics/:id(.:format)      topics#update
+           DELETE /topics/:id(.:format)      topics#destroy
+=end

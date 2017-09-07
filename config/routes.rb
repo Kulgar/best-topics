@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get "contact" => "pages#contact"
   get "profile" => "users#profile"
   get "topics/new" => "topics#new"
+  post "topics" => "topics#create"
 end

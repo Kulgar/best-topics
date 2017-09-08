@@ -1,5 +1,6 @@
 <h1>Sujets de discussion</h1>
 
+
 <table>
   <thead>
     <tr>
@@ -21,5 +22,6 @@
     <% end %>
   </tbody>
 </table>
+<%= will_paginate @topics, renderer: FoundationPagination::Rails %>
 
 <%= link_to 'Nouveau sujet', new_topic_path %>

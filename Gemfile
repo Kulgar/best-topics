@@ -37,7 +37,7 @@ gem 'jbuilder', '~> 2.5'
 ################
 # Front-end gems
 gem 'simple_form' # https://github.com/plataformatec/simple_form
-gem 'foundation-rails' # https://github.com/zurb/foundation-rails
+gem 'foundation-rails', '~> 6.4' # https://github.com/zurb/foundation-rails
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

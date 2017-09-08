@@ -44,6 +44,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-foundation'
 
 ################
 # Security
@@ -63,6 +65,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'faker' # https://github.com/stympy/faker
 end
 
 group :development do
@@ -72,6 +75,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'highline' # https://github.com/JEG2/highline
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

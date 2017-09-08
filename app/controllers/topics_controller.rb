@@ -1,7 +1,12 @@
 class TopicsController < ApplicationController
 
   def index
-    @topics = Topic.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+    @topics = get_topics
+  end
+
+  def published
+    @topics = get_topics.published
+    render "index"
   end
 
   # GET /topics/1
@@ -43,6 +48,10 @@ class TopicsController < ApplicationController
   end
 
   private
+    def get_topics
+      Topic.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+    end
+
     def topic_params
       params.require(:topic).permit(:title, :content)
     end

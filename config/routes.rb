@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "pages#home"
   get "about" => "pages#about"
@@ -6,7 +7,13 @@ Rails.application.routes.draw do
   get "profile" => "users#profile"
 
   # Topics
-  resources :topics
+  resources :topics do
+    collection do
+      get 'published'
+    end
+  end
+
+  resources :topic_answers
 end
 
 =begin

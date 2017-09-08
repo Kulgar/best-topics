@@ -1,12 +1,6 @@
 class TopicAnswersController < ApplicationController
   before_action :set_topic_answer, only: [:show, :edit, :update, :destroy]
 
-  # GET /topic_answers
-  # GET /topic_answers.json
-  def index
-    @topic_answers = TopicAnswer.all
-  end
-
   # GET /topic_answers/1
   # GET /topic_answers/1.json
   def show
@@ -56,7 +50,7 @@ class TopicAnswersController < ApplicationController
   def destroy
     @topic_answer.destroy
     respond_to do |format|
-      format.html { redirect_to topic_answers_url, notice: 'Topic answer was successfully destroyed.' }
+      format.html { redirect_to topics_url, notice: 'Topic answer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

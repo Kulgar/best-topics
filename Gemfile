@@ -46,6 +46,7 @@ gem 'turbolinks', '~> 5'
 gem 'sass-rails', '~> 5.0'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-foundation'
+gem "font-awesome-rails"
 
 ################
 # Security

@@ -17,6 +17,9 @@
       <div class="top-bar">
         <div class="top-bar-left">
           <ul class="menu">
+            <li>
+              <%= image_tag("logo.png", alt: "Logo", class: "logo") %>
+            </li>
             <li class="menu-text">BestTopics</li>
             <li><%= link_to "Accueil", root_path %></li>
             <li><%= link_to "Liste des sujets", topics_path %></li>

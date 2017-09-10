@@ -1,4 +1,6 @@
-<%= simple_form_for(@topic_answer, url: topic_post_answer_path(@topic)) do |f| %>
+<% #form_url = @topic_answer.new_record? ? topic_post_answer_path(@topic) : topic_answer_path %>
+
+<%= simple_form_for(@topic_answer, url: topic_answer_form_url) do |f| %>
   <fieldset class="fieldset">
     <legend><%= @topic_answer.new_record? ? "Répondre" : "Editer la réponse" %></legend>
 
@@ -11,7 +13,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit %>
+      <%= submit_button(f) %>
     </div>
   </fieldset>
 <% end %>

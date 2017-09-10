@@ -50,6 +50,10 @@ class TopicsController < ApplicationController
   end
 
   private
+    def website_title
+      super + " - sujets de discussion"
+    end
+
     def get_topics
       Topic.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
     end

@@ -38,6 +38,8 @@
 
     <br />
 
+    <%= content_for(:full_image) if content_for?(:full_image) %>
+
     <div class="row">
       <div class="medium-8 columns">
         <%= yield %>

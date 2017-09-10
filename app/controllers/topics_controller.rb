@@ -19,11 +19,13 @@ class TopicsController < ApplicationController
   # GET /topics/new
   def new
     @topic = Topic.new
+    @topic.build_picture
   end
 
   # GET /topics/1/edit
   def edit
     @topic = Topic.find(params[:id])
+    @topic.build_picture unless @topic.picture.present?
   end
 
   # POST /topics
@@ -66,7 +68,8 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :content, category_ids: [])
+      params.require(:topic).permit(:title, :content, category_ids: [],
+        picture_attributes: [:name, :file])
     end
 
 end

@@ -3,6 +3,13 @@
   <%= f.input :title %>
   <%= f.input :title, hint: "Le titre doit contenir entre 5 et 150 caractères" %>
   <%= f.input :content %>
-  <%= f.association :categories %> 
+  <%= f.association :categories %>
+  <fieldset class="fieldset">
+    <legend>Attacher une image</legend>
+    <%= f.simple_fields_for :picture do |p_form| %>
+      <%= p_form.input :name %>
+      <%= p_form.input :file %>
+    <% end %>
+  </fieldset>
   <%= submit_button(f) %>
 <% end %>

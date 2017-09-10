@@ -10,3 +10,9 @@
 <% end %>
 
 <%= render "topic_answers/form" %>
+
+<% if @topic.picture && @topic.picture.file %>
+  <% content_for(:full_image) do %>
+    <%= image_tag(@topic.picture.file.url(:original), alt: @topic.picture.name) %>
+  <% end %>
+<% end %>

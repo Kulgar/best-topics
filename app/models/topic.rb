@@ -5,6 +5,9 @@ class Topic < ApplicationRecord
 
   has_many :topic_answers, dependent: :destroy
   has_and_belongs_to_many :categories
+  has_one :picture, as: :imageable, validate: true
+
+  accepts_nested_attributes_for :picture
 
   validates :title, presence: true, length: { in: 5..150 }
   validates :published, inclusion: { in: [true, false] }

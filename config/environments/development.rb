@@ -55,6 +55,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # Bullet config
   config.after_initialize do
     Bullet.enable = true
     Bullet.alert = false
@@ -75,4 +76,7 @@ Rails.application.configure do
     #Bullet.stacktrace_excludes = [ 'their_gem', 'their_middleware' ]
     #Bullet.slack = { webhook_url: 'http://some.slack.url', channel: '#default', username: 'notifier' }
   end  
+
+  # Paperclip
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

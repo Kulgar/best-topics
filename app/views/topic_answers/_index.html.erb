@@ -1,4 +1,5 @@
 <% @topic_answers.each do |topic_answer| %>
+
   <hr />
   <div class="row">
     <h4 class="small-12 columns"><%= topic_answer.title %></h4>
@@ -10,4 +11,7 @@
       </div>
     </div>
   </div>
+
 <% end %>
+
+<%= will_paginate @topic_answers, renderer: FoundationPagination::Rails %>

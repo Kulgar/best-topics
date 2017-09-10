@@ -1,5 +1,6 @@
 class TopicAnswer < ApplicationRecord
   belongs_to :topic, touch: true
+  has_many :categories, through: :topic
 
 end
 

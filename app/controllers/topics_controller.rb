@@ -55,11 +55,18 @@ class TopicsController < ApplicationController
     end
 
     def get_topics
-      Topic.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+      if params[:category_id].present?
+        category = Category.find(params[:category_id])
+        topics   = category.topics
+      end
+
+      topics ||= Topic
+      
+      topics.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :content)
+      params.require(:topic).permit(:title, :content, category_ids: [])
     end
 
 end

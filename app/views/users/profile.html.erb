@@ -1,1 +1,26 @@
 Ma page de profil
+
+<%= simple_form_for @user do |form| %>
+
+  <div class="form-inputs">
+    <%= form.input :firstname %>
+    <%= form.input :lastname %>
+
+    <%= form.input :email %>
+    <%= form.input :birthday %>
+
+    <%= form.simple_fields_for :profile, @user.profile do |p_form| %>
+      
+      <%= p_form.input :description %>
+      <%= p_form.input :country %> 
+      <%= p_form.input :title %>
+      <%= p_form.input :website %>
+
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.button :submit, "Valider" %>
+  </div>
+
+<% end %>

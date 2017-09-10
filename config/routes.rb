@@ -13,9 +13,10 @@ Rails.application.routes.draw do
     collection do
       get 'published'
     end
+    post 'post-answer' => 'topic_answers#create'
   end
 
-  resources :topic_answers, except: [:index]
+  resources :topic_answers, except: [:index, :new, :create]
 end
 
 =begin

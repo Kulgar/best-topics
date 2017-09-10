@@ -2,6 +2,8 @@ class Topic < ApplicationRecord
 
   scope :published, -> { where(published: true) }
 
+  has_many :topic_answers, dependent: :destroy
+
   #def self.published
   #  where(published: true)
   #end
@@ -12,6 +14,10 @@ class Topic < ApplicationRecord
     else
       self.where('title LIKE ?', "%#{keywords}%")
     end
+  end
+
+  def get_answers(page)
+    self.topic_answers.paginate(page: page, per_page: 10)
   end
 
 end

@@ -1,4 +1,4 @@
-<%= simple_form_for(@topic_answer) do |f| %>
+<%= simple_form_for(@topic_answer, url: topic_post_answer_path(@topic)) do |f| %>
   <fieldset class="fieldset">
     <legend><%= @topic_answer.new_record? ? "Répondre" : "Editer la réponse" %></legend>
     <%= f.error_notification %>

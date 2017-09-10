@@ -62,7 +62,7 @@ class TopicsController < ApplicationController
 
       topics ||= Topic
       
-      topics.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+      topics.preload(:topic_answers).search(params[:search]).paginate(:page => params[:page], :per_page => 10)
     end
 
     def topic_params

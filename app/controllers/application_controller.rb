@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  def set_title
-    @title = "BestTopics"
-  end
+  protected
+
+    def website_title
+      "BestTopics"
+    end
+    helper_method :website_title
 
 end

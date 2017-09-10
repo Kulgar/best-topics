@@ -33,7 +33,7 @@ class TopicAnswersController < ApplicationController
   def update
     respond_to do |format|
       if @topic_answer.update(topic_answer_params)
-        format.html { redirect_to @topic_answer, notice: 'Topic answer was successfully updated.' }
+        format.html { redirect_to @topic_answer.topic, notice: 'Topic answer was successfully updated.' }
         format.json { render :show, status: :ok, location: @topic_answer }
       else
         format.html { render :edit }

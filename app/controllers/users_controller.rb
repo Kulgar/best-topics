@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
   def profile
-    set_title
     @user = User.new
     @user.build_profile
   end

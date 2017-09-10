@@ -1,6 +1,7 @@
 class TopicAnswersController < ApplicationController
   before_action :set_topic_answer, only: [:show, :edit, :update, :destroy]
 
+
   # GET /topic_answers/1
   # GET /topic_answers/1.json
   def show

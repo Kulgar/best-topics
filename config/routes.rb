@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "contact" => "pages#contact"
   get "profile" => "users#profile"
 
+  post "users" => "users#create"
+
   # Topics
   resources :topics do
     collection do

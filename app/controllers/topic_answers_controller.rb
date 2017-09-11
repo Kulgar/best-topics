@@ -3,6 +3,7 @@ class TopicAnswersController < ApplicationController
 
   # GET /topic_answers/1
   # GET /topic_answers/1.json
+  # http://localhost:3000/topic_answers/1.json
   def show
   end
 

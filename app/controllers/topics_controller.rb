@@ -13,7 +13,13 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @topic_answers = @topic.get_answers(params[:page])
-    @topic_answer  = @topic.topic_answers.build
+    #@topic_answer  = @topic.topic_answers.build if params[:format] == "html"
+    respond_to do |format|
+      format.html do 
+        @topic_answer = @topic.topic_answers.build
+      end
+      format.json
+    end
   end
 
   # GET /topics/new

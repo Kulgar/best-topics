@@ -6,6 +6,10 @@ class Topic < ApplicationRecord
   has_many :topic_answers, dependent: :destroy
   has_and_belongs_to_many :categories
 
+  validates :title, presence: true, length: { in: 5..150 }
+  validates :published, inclusion: { in: [true, false] }
+  validates :content, presence: true
+
   #def self.published
   #  where(published: true)
   #end

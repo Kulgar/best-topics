@@ -16,9 +16,9 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
     b.use :label_input
-    b.use :error, wrap_with: { tag: :small, class: :error }
+    b.use :error, wrap_with: { tag: :small, class: "form-error is-visible" }
 
-    # b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    b.use :hint,  wrap_with: { tag: :p, class: "help-text" }
   end
 
   config.wrappers :horizontal_form, tag: 'div', class: 'row', hint_class: :field_with_hint, error_class: :error do |b|
@@ -36,8 +36,9 @@ SimpleForm.setup do |config|
 
     b.wrapper :right_input_wrapper, tag: :div, class: 'small-9 columns' do |ba|
       ba.use :input
-      ba.use :error, wrap_with: { tag: :small, class: :error }
-      # ba.use :hint,  wrap_with: { tag: :span, class: :hint }
+      b.use :error, wrap_with: { tag: :small, class: "form-error is-visible" }
+
+      b.use :hint,  wrap_with: { tag: :p, class: "help-text" }
     end
   end
 
@@ -51,8 +52,8 @@ SimpleForm.setup do |config|
         bb.use :label_text
       end
 
-      ba.use :error, wrap_with: { tag: :small, class: :error }
-      # ba.use :hint,  wrap_with: { tag: :span, class: :hint }
+      b.use :error, wrap_with: { tag: :small, class: "form-error is-visible" }
+      b.use :hint,  wrap_with: { tag: :p, class: "help-text" }
     end
   end
 
@@ -75,8 +76,8 @@ SimpleForm.setup do |config|
     b.use :label, class: 'hidden-for-small-up'
     b.use :input
 
-    b.use :error, wrap_with: { tag: :small, class: :error }
-    # b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    b.use :error, wrap_with: { tag: :small, class: "form-error is-visible" }
+    b.use :hint,  wrap_with: { tag: :p, class: "help-text" }
   end
 
   # Examples of use:
@@ -90,8 +91,8 @@ SimpleForm.setup do |config|
       ba.use :label_input
     end
 
-    b.use :error, wrap_with: { tag: :small, class: :error }
-    # b.use :hint,  wrap_with: { tag: :span, class: :hint }
+    b.use :error, wrap_with: { tag: :small, class: "form-error is-visible" }
+    b.use :hint,  wrap_with: { tag: :p, class: "help-text" }
   end
 
   # CSS class for buttons
@@ -103,7 +104,7 @@ SimpleForm.setup do |config|
   config.item_wrapper_tag = :div
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'alert-box alert'
+  config.error_notification_class = 'callout alert'
 
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :vertical_form

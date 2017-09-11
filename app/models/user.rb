@@ -4,6 +4,12 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :profile
 
+  validates :email, uniqueness: {case_sensitive: false}
+  validates :firstname, presence: true, length: {maximum: 80}
+  validates :lastname, presence: true, length: {maximum: 80}
+
+  validates_associated :profile
+
 end
 
 # ## Schema Information

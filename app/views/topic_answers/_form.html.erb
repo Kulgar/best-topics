@@ -7,7 +7,7 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :title %>
+      <%= f.input :title, hint: "Le titre doit contenir entre 5 et 150 caractères" %>
       <%= f.input :content %>
       <%= f.input :published %>
     </div>

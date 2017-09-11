@@ -1,6 +1,7 @@
 <h1><%= title %></h1>
 <%= simple_form_for @topic do |f| %>
   <%= f.input :title %>
+  <%= f.input :title, hint: "Le titre doit contenir entre 5 et 150 caractères" %>
   <%= f.input :content %>
   <%= f.association :categories %> 
   <%= submit_button(f) %>

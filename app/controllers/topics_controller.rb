@@ -12,8 +12,8 @@ class TopicsController < ApplicationController
   # GET /topics/1
   def show
     @topic = Topic.find(params[:id])
-    @topic_answers = TopicAnswer.paginate(page: params[:page], per_page: 10)
-    @topic_answer  = TopicAnswer.new
+    @topic_answers = @topic.get_answers(params[:page])
+    @topic_answer  = @topic.topic_answers.build
   end
 
   # GET /topics/new
@@ -50,6 +50,10 @@ class TopicsController < ApplicationController
   end
 
   private
+    def website_title
+      super + " - sujets de discussion"
+    end
+
     def get_topics
       Topic.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
     end

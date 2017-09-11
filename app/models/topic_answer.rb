@@ -1,4 +1,5 @@
 class TopicAnswer < ApplicationRecord
+  belongs_to :topic, touch: true
 end
 
 # ## Schema Information
@@ -15,4 +16,10 @@ end
 # **`published`**   | `boolean`          |
 # **`created_at`**  | `datetime`         | `not null`
 # **`updated_at`**  | `datetime`         | `not null`
+# **`topic_id`**    | `integer`          |
+#
+# ### Indexes
+#
+# * `index_topic_answers_on_topic_id`:
+#     * **`topic_id`**
 #

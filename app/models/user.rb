@@ -1,6 +1,8 @@
 class User < ApplicationRecord
 
-  # belongs_to :profile
+  has_one :profile, dependent: :destroy
+
+  accepts_nested_attributes_for :profile
 
 end
 

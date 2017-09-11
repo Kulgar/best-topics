@@ -7,11 +7,6 @@ class TopicAnswersController < ApplicationController
   def show
   end
 
-  # GET /topic_answers/new
-  def new
-    @topic_answer = TopicAnswer.new
-  end
-
   # GET /topic_answers/1/edit
   def edit
   end
@@ -19,13 +14,15 @@ class TopicAnswersController < ApplicationController
   # POST /topic_answers
   # POST /topic_answers.json
   def create
-    @topic_answer = TopicAnswer.new(topic_answer_params)
+    @topic        = Topic.find(params[:topic_id])
+    @topic_answer = @topic.topic_answers.build(topic_answer_params)
 
     respond_to do |format|
       if @topic_answer.save
-        format.html { redirect_to @topic_answer, notice: 'Topic answer was successfully created.' }
+        format.html { redirect_to @topic, notice: 'Topic answer was successfully created.' }
         format.json { render :show, status: :created, location: @topic_answer }
       else
+        @topic_answers = @topic.get_answers(params[:page])
         format.html { render :new }
         format.json { render json: @topic_answer.errors, status: :unprocessable_entity }
       end
@@ -37,7 +34,7 @@ class TopicAnswersController < ApplicationController
   def update
     respond_to do |format|
       if @topic_answer.update(topic_answer_params)
-        format.html { redirect_to @topic_answer, notice: 'Topic answer was successfully updated.' }
+        format.html { redirect_to @topic_answer.topic, notice: 'Topic answer was successfully updated.' }
         format.json { render :show, status: :ok, location: @topic_answer }
       else
         format.html { render :edit }

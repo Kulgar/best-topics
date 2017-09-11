@@ -1,19 +1,24 @@
 Rails.application.routes.draw do
 
+  resources :categories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "pages#home"
   get "about" => "pages#about"
   get "contact" => "pages#contact"
   get "profile" => "users#profile"
 
+  post "users" => "users#create"
+
   # Topics
   resources :topics do
     collection do
       get 'published'
     end
+    post 'post-answer' => 'topic_answers#create'
+    # topic_post_answer POST   /topics/:topic_id/post-answer(.:format) topic_answers#create
   end
 
-  resources :topic_answers, except: [:index]
+  resources :topic_answers, except: [:index, :new, :create]
 end
 
 =begin

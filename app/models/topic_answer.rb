@@ -1,11 +1,10 @@
 class TopicAnswer < ApplicationRecord
+  include Topicable
+
   belongs_to :topic, touch: true
   has_many :categories, through: :topic
 
   validates :topic, presence: true
-  validates :title, presence: true, length: { in: 5..150 }
-  validates :published, inclusion: { in: [true, false] }
-  validates :content, presence: true
 
 end
 

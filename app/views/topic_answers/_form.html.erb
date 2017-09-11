@@ -1,13 +1,16 @@
 <%= simple_form_for(@topic_answer) do |f| %>
-  <%= f.error_notification %>
+  <fieldset class="fieldset">
+    <legend><%= @topic_answer.new_record? ? "Répondre" : "Editer la réponse" %></legend>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.input :published %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :title %>
+      <%= f.input :content %>
+      <%= f.input :published %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  </fieldset>
 <% end %>

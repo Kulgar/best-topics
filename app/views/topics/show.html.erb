@@ -3,3 +3,10 @@
 
 <%= link_to "Editer", edit_topic_path(@topic) %>
 <%= link_to 'Retour index', topics_path %>
+
+<% if @topic_answers.present? %>
+  <h6 class="subheader"><%= @topic_answers.count %> Réponse(s)</h6>
+  <%= render "topic_answers/index" %>
+<% end %>
+
+<%= render "topic_answers/form" %>

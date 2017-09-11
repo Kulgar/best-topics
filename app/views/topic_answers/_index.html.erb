@@ -1,0 +1,17 @@
+<% @topic_answers.each do |topic_answer| %>
+
+  <hr />
+  <div class="row">
+    <h4 class="small-12 columns"><%= topic_answer.title %></h4>
+    <div class="small-12 columns">
+      <%= simple_format(topic_answer.content) %>
+      <div class="small button-group">
+        <%= link_to 'Edit', edit_topic_answer_path(topic_answer), class: "button" %>
+        <%= link_to 'Destroy', topic_answer, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+<%= will_paginate @topic_answers, renderer: FoundationPagination::Rails %>

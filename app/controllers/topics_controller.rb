@@ -12,6 +12,8 @@ class TopicsController < ApplicationController
   # GET /topics/1
   def show
     @topic = Topic.find(params[:id])
+    @topic_answers = TopicAnswer.paginate(page: params[:page], per_page: 10)
+    @topic_answer  = TopicAnswer.new
   end
 
   # GET /topics/new

@@ -5,7 +5,7 @@
 * Ne permettre la création de sujets que par des utilisateurs authentifiés
 * Ne permettre la création de réponses que par des utilisateurs authentifiés
 * Faire disparaître le bouton "catégories" si l'utilisateur n'est pas admin
-* Associer une réponse et un sujet créés à son auteur
+* Associer une réponse et un sujet à leur auteur (l'utilisateur actuellement connecté)
 * Ne permettre l'édition qu'à l'auteur
 * N'afficher que les sujets et réponses publiés
 * Seul l'administrateur et les auteurs des sujets / réponses peuvent voir les non publiés
@@ -17,9 +17,6 @@
 _Pour les points bloquants, n'hésitez pas - quel paradoxe - à faire des recherches sur stackoverflow_
 
 
-* Ne permettre la création de sujets que par des utilisateurs authentifiés
-* Ne permettre la création de réponses que par des utilisateurs authentifiés
-* Faire disparaître le bouton "catégories" si l'utilisateur n'est pas admin
 * Associer une réponse et un sujet créés à son auteur
 * Ne permettre l'édition qu'à l'auteur
 * N'afficher que les sujets et réponses publiés

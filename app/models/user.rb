@@ -7,7 +7,8 @@ class User < ApplicationRecord
   acts_as_voter
 
   has_one :profile, dependent: :destroy
-
+  has_many :topics
+  has_many :topic_answers
   has_one :avatar, class_name: "Picture", as: :imageable, validate: true
 
   accepts_nested_attributes_for :profile, :avatar
@@ -20,6 +21,11 @@ class User < ApplicationRecord
 
   def after_confirmation
     UserMailer.welcome_email(self).deliver_later
+  end
+
+  def can_manage?(data)
+    return true if self.is_admin? || data.user_id == self.id
+    return false
   end
 
 end

@@ -23,9 +23,12 @@ end
 # **`created_at`**  | `datetime`         | `not null`
 # **`updated_at`**  | `datetime`         | `not null`
 # **`topic_id`**    | `integer`          |
+# **`user_id`**     | `integer`          |
 #
 # ### Indexes
 #
 # * `index_topic_answers_on_topic_id`:
 #     * **`topic_id`**
+# * `index_topic_answers_on_user_id`:
+#     * **`user_id`**
 #

@@ -5,10 +5,12 @@
     <h4 class="small-12 columns"><%= topic_answer.title %></h4>
     <div class="small-12 columns">
       <%= simple_format(topic_answer.content) %>
-      <div class="small button-group">
-        <%= link_to 'Edit', edit_topic_answer_path(topic_answer), class: "button" %>
-        <%= link_to 'Destroy', topic_answer, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
-      </div>
+      <% if user_signed_in? && current_user.can_manage?(topic_answer) %>
+        <div class="small button-group">
+          <%= link_to 'Edit', edit_topic_answer_path(topic_answer), class: "button" %>
+          <%= link_to 'Destroy', topic_answer, method: :delete, data: { confirm: 'Are you sure?' }, class: "button alert" %>
+        </div>
+      <% end %>
     </div>
   </div>
 

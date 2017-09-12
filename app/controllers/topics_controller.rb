@@ -49,7 +49,7 @@ class TopicsController < ApplicationController
 
   # POST /topics
   def create
-    @topic = Topic.new(topic_params)
+    @topic = current_user.topics.build(topic_params)
     if @topic.save
       redirect_to topics_path
     else

@@ -15,6 +15,7 @@ module Topicable
 
     # Polymorphic association to picture
     has_one :picture, as: :imageable, validate: false
+    belongs_to :user
 
     accepts_nested_attributes_for :picture
   end

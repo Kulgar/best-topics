@@ -15,7 +15,8 @@ class TopicAnswersController < ApplicationController
   # POST /topic_answers.json
   def create
     @topic        = Topic.find(params[:topic_id])
-    @topic_answer = @topic.topic_answers.build(topic_answer_params)
+    @topic_answer = current_user.topic_answers.build(topic_answer_params)
+    @topic_answer.topic = @topic
 
     respond_to do |format|
       if @topic_answer.save

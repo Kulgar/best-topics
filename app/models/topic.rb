@@ -32,4 +32,10 @@ end
 # **`created_at`**  | `datetime`         | `not null`
 # **`updated_at`**  | `datetime`         | `not null`
 # **`published`**   | `boolean`          | `default(TRUE)`
+# **`user_id`**     | `integer`          |
+#
+# ### Indexes
+#
+# * `index_topics_on_user_id`:
+#     * **`user_id`**
 #

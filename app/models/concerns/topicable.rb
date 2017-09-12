@@ -14,9 +14,9 @@ module Topicable
     scope :search, -> (keywords) { where('title LIKE ?', "%#{keywords}%") }
 
     # Polymorphic association to picture
-    has_one :picture, as: :imageable, validate: true
+    has_one :picture, as: :imageable, validate: false
 
-    accepts_nested_attributes_for :picture, allow_destroy: true
+    accepts_nested_attributes_for :picture
   end
 
   def publish!

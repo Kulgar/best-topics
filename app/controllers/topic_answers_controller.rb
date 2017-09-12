@@ -48,7 +48,7 @@ class TopicAnswersController < ApplicationController
   def destroy
     @topic_answer.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic answer was successfully destroyed.' }
+      format.html { redirect_to @topic_answer.topic, notice: 'Topic answer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

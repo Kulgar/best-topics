@@ -33,7 +33,7 @@
         <td>
           <div class="button-group">
             <%= link_to 'Voir', topic, class: "button secondary" %>
-            <% if user_signed_in? && current_user.can_manage?(topic) %>
+            <% if can_manage?(topic) %>
               <%= link_to 'Editer', edit_topic_path(topic), class: "button success" %>
               <%= link_to 'Supprimer', topic, method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: "button alert" %>
             <% end %>

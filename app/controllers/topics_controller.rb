@@ -2,6 +2,8 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [:upvote, :downvote, :show, :edit, :update, :destroy]
   before_action :set_user, only: [:upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :verify_author!, only: [:edit, :update, :destroy]
+
   # after_action
   # around_action
 
@@ -73,6 +75,12 @@ class TopicsController < ApplicationController
   end
 
   private
+    def verify_author!
+      unless current_user.can_manage?(@topic)
+        redirect_to topics_path, alert: "Vous n'êtes pas autorisé"
+      end
+    end
+
     def website_title
       super + " - sujets de discussion"
     end

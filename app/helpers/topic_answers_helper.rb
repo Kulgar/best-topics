@@ -4,6 +4,6 @@ module TopicAnswersHelper
   end
 
   def back_to_topic_link
-    link_to 'Retour au sujet', @topic_answer.topic
+    link_to 'Retour au sujet', @topic_answer.topic, class: "button"
   end
 end

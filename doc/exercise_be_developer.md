@@ -17,7 +17,6 @@
 _Pour les points bloquants, n'hésitez pas - quel paradoxe - à faire des recherches sur stackoverflow_
 
 
-* Associer une réponse et un sujet créés à son auteur
 * Ne permettre l'édition qu'à l'auteur
 * N'afficher que les sujets et réponses publiés
 * Seul l'administrateur et les auteurs des sujets / réponses peuvent voir les non publiés

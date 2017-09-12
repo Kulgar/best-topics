@@ -1,6 +1,7 @@
 class TopicAnswersController < ApplicationController
   before_action :set_topic_answer, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
+  before_action :verify_author!, only: [:edit, :update, :destroy]
 
   # GET /topic_answers/1
   # GET /topic_answers/1.json
@@ -32,7 +33,7 @@ class TopicAnswersController < ApplicationController
 
   # PATCH/PUT /topic_answers/1
   # PATCH/PUT /topic_answers/1.json
-  def update
+  def update    
     respond_to do |format|
       if @topic_answer.update(topic_answer_params)
         format.html { redirect_to @topic_answer.topic, notice: 'Topic answer was successfully updated.' }
@@ -55,6 +56,12 @@ class TopicAnswersController < ApplicationController
   end
 
   private
+    def verify_author!
+      unless current_user.can_manage?(@topic_answer)
+        redirect_to @topic_answer.topic, alert: "Vous n'êtes pas autorisé"
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_topic_answer
       @topic_answer = TopicAnswer.find(params[:id])

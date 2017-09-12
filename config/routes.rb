@@ -9,9 +9,6 @@ Rails.application.routes.draw do
 
   # Topics
   resources :topics do
-    collection do
-      get 'published'
-    end
     member do
       post 'upvote'
       post 'downvote' # :id

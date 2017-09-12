@@ -11,11 +11,6 @@ class TopicsController < ApplicationController
     @topics = get_topics
   end
 
-  def published
-    @topics = get_topics.published
-    render "index"
-  end
-
   def upvote
     @user.voted_up_on?(@topic) ? @topic.unliked_by(@user) : @topic.liked_by(@user)
     redirect_to @topic
@@ -110,7 +105,7 @@ class TopicsController < ApplicationController
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :content, category_ids: [],
+      params.require(:topic).permit(:title, :content, :published, category_ids: [],
         picture_attributes: [:id, :name, :file])
     end
 

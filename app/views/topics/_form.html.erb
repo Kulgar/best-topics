@@ -5,7 +5,7 @@
   <%= f.input :content %>
   <%= f.association :categories %>
   <%= f.input :published %>
-
+  
   <fieldset class="fieldset">
     <legend>Attacher une image</legend>
     <%= f.simple_fields_for :picture, @topic.picture do |p_form| %>

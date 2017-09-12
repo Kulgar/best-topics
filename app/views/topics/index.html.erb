@@ -26,6 +26,7 @@
 
   <tbody>
     <% @topics.each do |topic| %>
+      <% next unless topic.published? || can_manage?(topic) %>
       <tr>
         <td><%= topic.id %></td>
         <td><%= topic.title %></td>
@@ -45,7 +46,5 @@
 </table>
 
 <%= will_paginate @topics, renderer: FoundationPagination::Rails %>
-
-<%= link_to "Sujets publiés", published_topics_path %>
 
 <%= link_to('Nouveau sujet', new_topic_path, class: "button") if user_signed_in? %>

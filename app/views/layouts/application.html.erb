@@ -22,7 +22,9 @@
             </li>
             <li class="menu-text">BestTopics</li>
             <li><%= link_to "Liste des sujets", root_path %></li>
-            <li><%= link_to "Catégories", categories_path %></li>
+            <% if user_signed_in? && current_user.is_admin? %>
+              <li><%= link_to "Catégories", categories_path %></li>
+            <% end %>
             <li><%= link_to "A propos", about_path %></li>
             <li><%= link_to "Nous contacter", contact_path %></li>
           </ul>

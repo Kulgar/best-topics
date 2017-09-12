@@ -7,7 +7,7 @@
 
   <fieldset class="fieldset">
     <legend>Attacher une image</legend>
-    <%= f.simple_fields_for :picture do |p_form| %>
+    <%= f.simple_fields_for :picture, @topic.picture do |p_form| %>
       <%= p_form.input :name %>
       <%= p_form.input :file, hint: "Image existante : #{(@topic.picture.file_file_name if @topic.picture)}"  %>
     <% end %>

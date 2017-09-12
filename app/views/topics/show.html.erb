@@ -4,7 +4,23 @@
   <%= image_tag(@topic.picture.file.url(:original), alt: @topic.picture.name) %>
 <% end %>
 
-<%= simple_format(@topic.content) %>
+<div class="row topic-wrapper">
+  <div class="small-1 column vote">
+    <%= link_to upvote_topic_path(@topic), class: "button success tiny", method: :post do %>
+      <%= fa_icon "plus" %>
+    <% end %>
+    <div>
+      <%= @topic.get_upvotes.size - @topic.get_downvotes.size %>
+    </div>
+
+    <%= link_to downvote_topic_path(@topic), class: "button alert tiny", method: :post do %>
+      <%= fa_icon "minus" %>
+    <% end %>
+  </div>
+  <div class="small-11 columns">
+    <%= (@topic.content) %>
+  </div>
+</div>
 
 <%= link_to "Editer", edit_topic_path(@topic) %>
 <%= link_to 'Retour index', topics_path %>

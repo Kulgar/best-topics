@@ -14,6 +14,7 @@ gem 'rails', '~> 5.1.3'
 # Database
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+gem 'acts_as_votable', '~> 0.10.0'
 
 ################
 # Server
@@ -54,6 +55,7 @@ gem 'country_select' # https://github.com/stefanpenner/country_select
 # Security
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'devise' # https://github.com/plataformatec/devise
 
 ################
 # Deployment
@@ -81,6 +83,7 @@ group :development do
   gem 'highline' # https://github.com/JEG2/highline
   gem 'annotate' # https://github.com/ctran/annotate_models
   gem 'bullet' # https://github.com/flyerhzm/bullet
+  gem "letter_opener" # https://github.com/ryanb/letter_opener
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

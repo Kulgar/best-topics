@@ -1,4 +1,8 @@
 class TopicsController < ApplicationController
+  before_action :set_topic, only: [:upvote, :downvote, :show, :edit, :update, :destroy]
+  before_action :set_user, only: [:upvote, :downvote]
+  # after_action
+  # around_action
 
   def index
     @topics = get_topics
@@ -9,9 +13,18 @@ class TopicsController < ApplicationController
     render "index"
   end
 
+  def upvote
+    @user.voted_up_on?(@topic) ? @topic.unliked_by(@user) : @topic.liked_by(@user)
+    redirect_to @topic
+  end
+
+  def downvote
+    @user.voted_down_on?(@topic) ? @topic.undisliked_by(@user) : @topic.downvote_from(@user)
+    redirect_to @topic
+  end
+
   # GET /topics/1
   def show
-    @topic = Topic.find(params[:id])
     @topic_answers = @topic.get_answers(params[:page])
     #@topic_answer  = @topic.topic_answers.build if params[:format] == "html"
     respond_to do |format|
@@ -30,7 +43,6 @@ class TopicsController < ApplicationController
 
   # GET /topics/1/edit
   def edit
-    @topic = Topic.find(params[:id])
     @topic.build_picture unless @topic.picture.present?
   end
 
@@ -46,7 +58,6 @@ class TopicsController < ApplicationController
 
   # PATCH/PUT /topics/1
   def update
-    @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
       redirect_to @topic
     else
@@ -56,7 +67,6 @@ class TopicsController < ApplicationController
 
   # DELETE /topics/1
   def destroy
-    @topic = Topic.find(params[:id])
     @topic.destroy
     redirect_to topics_url
   end
@@ -64,6 +74,18 @@ class TopicsController < ApplicationController
   private
     def website_title
       super + " - sujets de discussion"
+    end
+
+    def set_topic
+      @topic = Topic.find(params[:id])
+    end
+
+    def set_user
+      if User.any?
+        @user = User.first
+      else
+        redirect_to profile_path
+      end
     end
 
     def get_topics

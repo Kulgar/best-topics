@@ -2,6 +2,7 @@ module Topicable
   extend ActiveSupport::Concern
 
   included do
+    acts_as_votable
     validates :title, presence: true, length: { in: 5..150 }
     validates :published, inclusion: { in: [true, false] }
     validates :content, presence: true
@@ -15,7 +16,7 @@ module Topicable
     # Polymorphic association to picture
     has_one :picture, as: :imageable, validate: true
 
-    accepts_nested_attributes_for :picture
+    accepts_nested_attributes_for :picture, allow_destroy: true
   end
 
   def publish!

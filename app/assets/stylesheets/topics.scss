@@ -1,3 +1,11 @@
 // Place all the styles related to the TopicAnswers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.vote {
+  text-align: center;
+  a { margin-bottom: 0;}
+}
+
+.topic-wrapper {
+  margin-bottom: 1rem;
+}

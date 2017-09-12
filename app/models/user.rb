@@ -2,7 +2,15 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
 
-  accepts_nested_attributes_for :profile
+  has_one :avatar, class_name: "Picture", as: :imageable, validate: true
+
+  accepts_nested_attributes_for :profile, :avatar
+
+  validates :email, uniqueness: {case_sensitive: false}
+  validates :firstname, presence: true, length: {maximum: 80}
+  validates :lastname, presence: true, length: {maximum: 80}
+
+  validates_associated :profile
 
 end
 

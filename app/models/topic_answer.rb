@@ -1,5 +1,11 @@
 class TopicAnswer < ApplicationRecord
+  include Topicable
+
   belongs_to :topic, touch: true
+  has_many :categories, through: :topic
+
+  validates :topic, presence: true
+
 end
 
 # ## Schema Information

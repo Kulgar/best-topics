@@ -23,7 +23,7 @@ class TopicAnswersController < ApplicationController
         format.json { render :show, status: :created, location: @topic_answer }
       else
         @topic_answers = @topic.get_answers(params[:page])
-        format.html { render :new }
+        format.html { render "topics/show" }
         format.json { render json: @topic_answer.errors, status: :unprocessable_entity }
       end
     end

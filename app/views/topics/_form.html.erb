@@ -1,6 +1,17 @@
 <h1><%= title %></h1>
 <%= simple_form_for @topic do |f| %>
-  <%= f.input :title %>
+  <%= f.error_notification %>
+  <%= f.input :title, hint: "Le titre doit contenir entre 5 et 150 caractères" %>
   <%= f.input :content %>
+  <%= f.association :categories %>
+
+  <fieldset class="fieldset">
+    <legend>Attacher une image</legend>
+    <%= f.simple_fields_for :picture do |p_form| %>
+      <%= p_form.input :name %>
+      <%= p_form.input :file, hint: "Image existante : #{(@topic.picture.file_file_name if @topic.picture)}"  %>
+    <% end %>
+  </fieldset>
+
   <%= submit_button(f) %>
 <% end %>

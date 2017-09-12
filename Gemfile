@@ -28,6 +28,7 @@ gem 'puma', '~> 3.7'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'paperclip', "~> 5.0.0" # https://github.com/thoughtbot/paperclip
 
 ################
 # API
@@ -79,6 +80,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'highline' # https://github.com/JEG2/highline
   gem 'annotate' # https://github.com/ctran/annotate_models
+  gem 'bullet' # https://github.com/flyerhzm/bullet
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

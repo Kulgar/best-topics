@@ -1,4 +1,9 @@
 <h1><%= @topic.title %></h1>
+
+<% if @topic.picture && @topic.picture.file %>
+  <%= image_tag(@topic.picture.file.url(:original), alt: @topic.picture.name) %>
+<% end %>
+
 <%= simple_format(@topic.content) %>
 
 <%= link_to "Editer", edit_topic_path(@topic) %>

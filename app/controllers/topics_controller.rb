@@ -13,17 +13,25 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @topic_answers = @topic.get_answers(params[:page])
-    @topic_answer  = @topic.topic_answers.build
+    #@topic_answer  = @topic.topic_answers.build if params[:format] == "html"
+    respond_to do |format|
+      format.html do
+        @topic_answer  = @topic.topic_answers.build
+      end
+      format.json
+    end
   end
 
   # GET /topics/new
   def new
     @topic = Topic.new
+    @topic.build_picture
   end
 
   # GET /topics/1/edit
   def edit
     @topic = Topic.find(params[:id])
+    @topic.build_picture unless @topic.picture.present?
   end
 
   # POST /topics
@@ -31,6 +39,8 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
     if @topic.save
       redirect_to topics_path
+    else
+      render :new
     end
   end
 
@@ -39,6 +49,8 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
       redirect_to @topic
+    else
+      render :edit
     end
   end
 
@@ -55,11 +67,20 @@ class TopicsController < ApplicationController
     end
 
     def get_topics
-      Topic.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+      if params[:category_id].present?
+        category = Category.find(params[:category_id])
+        topics   = category.topics
+      end
+
+      topics ||= Topic
+
+      topics.preload(:topic_answers).search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+      # eager_load
     end
 
     def topic_params
-      params.require(:topic).permit(:title, :content)
+      params.require(:topic).permit(:title, :content, category_ids: [],
+        picture_attributes: [:name, :file])
     end
 
 end

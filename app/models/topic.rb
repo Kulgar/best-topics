@@ -1,20 +1,12 @@
 class Topic < ApplicationRecord
+  include Topicable
 
   has_many :topic_answers, dependent: :destroy
-
-  scope :published, -> { where(published: true) }
+  has_and_belongs_to_many :categories
 
   #def self.published
   #  where(published: true)
   #end
-
-  def self.search(keywords)
-    if keywords.blank? # if keywords.nil? || keywords == ""
-      self
-    else
-      self.where('title LIKE ?', "%#{keywords}%")
-    end
-  end
 
   def get_answers(page)
     self.topic_answers.paginate(page: page, per_page: 10)

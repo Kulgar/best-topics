@@ -18,6 +18,11 @@ Ma page de profil
 
     <% end %>
 
+    <%= form.simple_fields_for :avatar do |a_form| %>
+      <%= a_form.input :name %>
+      <%= a_form.input :file, as: :file %>
+    <% end %>
+
   </div>
 
   <div class="form-actions">

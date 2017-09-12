@@ -22,14 +22,6 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_later
   end
 
-  def get_profile
-    self.profile.present? ? self.profile : self.build_profile
-  end
-
-  def get_avatar
-    self.avatar.present? ? self.avatar : self.build_avatar
-  end
-
 end
 
 # ## Schema Information

@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   end
 
   resources :topic_answers, except: [:index, :new, :create]
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   resources :categories
 end
 

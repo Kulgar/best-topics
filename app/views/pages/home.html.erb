@@ -1,7 +1,7 @@
 Bonjour <%= current_user.firstname if user_signed_in? %>
 <br />
 
-<%= image_tag(current_user.avatar.file.url(:thumb)) if current_user && current_user.get_avatar %>
+<%= image_tag(current_user.avatar.file.url(:thumb)) if current_user && current_user.avatar %>
 
 <ul>
 	<% @products.each do |product| %>

@@ -23,7 +23,7 @@
 
       <%= f.input :birthday %>
 
-      <%= f.simple_fields_for :profile, current_user.get_profile do |p_form| %>
+      <%= f.simple_fields_for :profile do |p_form| %>
 
         <%= p_form.input :description %>
         <%= p_form.input :country %>
@@ -32,7 +32,7 @@
 
       <% end %>
 
-      <%= f.simple_fields_for :avatar, current_user.get_avatar do |a_form| %>
+      <%= f.simple_fields_for :avatar do |a_form| %>
         <%= a_form.input :name %>
         <%= a_form.input :file, as: :file %>
       <% end %>

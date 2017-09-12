@@ -12,6 +12,10 @@ class Topic < ApplicationRecord
     self.topic_answers.paginate(page: page, per_page: 10)
   end
 
+  def current_rate
+    self.get_upvotes.size - self.get_downvotes.size
+  end
+
 end
 
 # topic.title

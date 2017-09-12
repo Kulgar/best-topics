@@ -1,6 +1,5 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:upvote, :downvote, :show, :edit, :update, :destroy]
-  before_action :set_user, only: [:upvote, :downvote]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :verify_author!, only: [:edit, :update, :destroy]
 
@@ -12,12 +11,12 @@ class TopicsController < ApplicationController
   end
 
   def upvote
-    @user.voted_up_on?(@topic) ? @topic.unliked_by(@user) : @topic.liked_by(@user)
+    current_user.voted_up_on?(@topic) ? @topic.unliked_by(current_user) : @topic.liked_by(current_user)
     redirect_to @topic
   end
 
   def downvote
-    @user.voted_down_on?(@topic) ? @topic.undisliked_by(@user) : @topic.downvote_from(@user)
+    current_user.voted_down_on?(current_user) ? @topic.undisliked_by(current_user) : @topic.downvote_from(current_user)
     redirect_to @topic
   end
 
@@ -82,14 +81,6 @@ class TopicsController < ApplicationController
 
     def set_topic
       @topic = Topic.find(params[:id])
-    end
-
-    def set_user
-      if User.any?
-        @user = User.first
-      else
-        redirect_to profile_path
-      end
     end
 
     def get_topics

@@ -14,8 +14,3 @@
 * Supprimer la page d'accueil
 
 _Pour les points bloquants, n'hésitez pas - quel paradoxe - à faire des recherches sur stackoverflow_
-
-
-* N'afficher que les sujets et réponses publiés
-* Seul l'administrateur et les auteurs des sujets / réponses peuvent voir les non publiés
-* Faire ce qu'il faut pour que l'utilisateur actuellement connecté puisse voter

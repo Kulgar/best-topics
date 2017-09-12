@@ -6,16 +6,22 @@
 
 <div class="row topic-wrapper">
   <div class="small-1 column vote">
-    <%= link_to upvote_topic_path(@topic), class: "button success tiny", method: :post do %>
-      <%= fa_icon "plus" %>
-    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to upvote_topic_path(@topic), class: "button success tiny", method: :post do %>
+        <%= fa_icon "plus" %>
+      <% end %>
 
-    <div>
-      <%= @topic.get_upvotes.size - @topic.get_downvotes.size %>
-    </div>
+      <div>
+        <%= @topic.current_rate %>
+      </div>
 
-    <%= link_to downvote_topic_path(@topic), class: "button alert tiny", method: :post do %>
-      <%= fa_icon "minus" %>
+      <%= link_to downvote_topic_path(@topic), class: "button alert tiny", method: :post do %>
+        <%= fa_icon "minus" %>
+      <% end %>
+    <% else %>
+      Note:
+      <br />
+      <%= @topic.current_rate %>
     <% end %>
   </div>
   <div class="small-11 columns">

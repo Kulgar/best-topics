@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:upvote, :downvote, :show, :edit, :update, :destroy]
   before_action :set_user, only: [:upvote, :downvote]
+  before_action :authenticate_user!, except: [:index, :show]
   # after_action
   # around_action
 

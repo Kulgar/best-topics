@@ -9,6 +9,7 @@
     <%= link_to upvote_topic_path(@topic), class: "button success tiny", method: :post do %>
       <%= fa_icon "plus" %>
     <% end %>
+
     <div>
       <%= @topic.get_upvotes.size - @topic.get_downvotes.size %>
     </div>
@@ -22,12 +23,16 @@
   </div>
 </div>
 
-<%= link_to "Editer", edit_topic_path(@topic) %>
-<%= link_to 'Retour index', topics_path %>
+<%= link_to("Editer", edit_topic_path(@topic), class: "button success") if user_signed_in? %>
+<%= link_to 'Retour index', topics_path, class: "button" %>
 
 <% if @topic_answers.present? %>
   <h6 class="subheader"><%= @topic_answers.count %> Réponse(s)</h6>
   <%= render "topic_answers/index" %>
 <% end %>
 
-<%= render "topic_answers/form" %>
+<% if user_signed_in? %>
+  <%= render "topic_answers/form" %>
+<% else %>
+  <p class="callout">Vous devez vous connecter pour répondre</p>
+<% end %>

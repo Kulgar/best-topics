@@ -102,7 +102,7 @@ class TopicsController < ApplicationController
 
     def topic_params
       params.require(:topic).permit(:title, :content, category_ids: [],
-        picture_attributes: [:name, :file])
+        picture_attributes: [:id, :name, :file])
     end
 
 end

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname])
 
       devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :birthday,
-        profile_attributes: [:description, :country, :title, :website],
-        avatar_attributes: [:file, :name]])
+        profile_attributes: [:id, :description, :country, :title, :website],
+        avatar_attributes: [:id, :file, :name]])
     end
 end

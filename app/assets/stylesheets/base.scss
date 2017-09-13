@@ -1,0 +1,49 @@
+@import 'settings';
+
+#application-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header, nav, footer {
+    flex-shrink: 0;
+}
+
+header {
+  border-top: 3px solid $primary-color;
+  box-shadow:  0 1px 0 rgba(12, 13, 14, 0.15), 0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent;
+  .menu {
+    .menu-text, a { color: #535a60; }
+    a:hover {
+      background-color: rgba(120,120,120,0.1);
+    }
+    li.active a:hover {
+      color: #535a60;
+    }
+
+    img.logo { height: 40px; }
+  }
+}
+
+main {
+    flex: 1 0 auto; /* Use 1 0 auto instead of just 1 for backwards compatibility with other browsers */
+}
+
+footer {
+  background-color: #074E68;
+  color: $white;
+  min-height: 4rem;
+  padding: 1rem 0;
+
+  a {
+    color: white;
+    &:hover {
+      color: #DDD;
+    }
+  }
+
+  .menu-text {
+    text-transform: uppercase;
+  }
+}

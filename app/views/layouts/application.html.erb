@@ -13,51 +13,68 @@
 
   <body>
 
-    <header>
-      <div class="top-bar">
-        <div class="top-bar-left">
-          <ul class="menu">
-            <li>
-              <%= image_tag("logo.png", alt: "Logo", class: "logo") %>
-            </li>
-            <li class="menu-text">BestTopics</li>
-            <li><%= link_to "Liste des sujets", root_path %></li>
-            <% if user_signed_in? && current_user.is_admin? %>
-              <li><%= link_to "Catégories", categories_path %></li>
-            <% end %>
-            <li><%= link_to "A propos", about_path %></li>
-            <li><%= link_to "Nous contacter", contact_path %></li>
-          </ul>
+    <div id="application-container">
+      <header>
+        <div class="top-bar">
+          <div class="top-bar-left">
+            <ul class="menu">
+              <li>
+                <%= image_tag("logo.png", alt: "Logo", class: "logo") %>
+              </li>
+              <li class="menu-text">BestTopics</li>
+              <li class="<%= 'active' if controller_name == "topics" %>"><%= link_to "Discussions", root_path %></li>
+              <% if user_signed_in? && current_user.is_admin? %>
+                <li><%= link_to "Catégories", categories_path %></li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="top-bar-right">
+            <ul class="menu">
+              <% if user_signed_in? %>
+                <li><%= link_to "Mon profil", edit_user_registration_path %></li>
+                <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Se connecter", new_user_session_path %></li>
+                <li><%= link_to "S'inscrire", new_user_registration_path %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-        <div class="top-bar-right">
-          <ul class="menu">
-            <% if user_signed_in? %>
-              <li><%= link_to "Mon profil", edit_user_registration_path %></li>
-              <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to "Se connecter", new_user_session_path %></li>
-              <li><%= link_to "S'inscrire", new_user_registration_path %></li>
-            <% end %>
-          </ul>
+      </header>
+
+      <main>
+        <% flash.each do |message_type, message| %>
+          <div class="callout <%= message_type %> <%= 'success' if message_type == 'notice' %>">
+            <%= message %>
+          </div>
+        <% end %>
+
+        <br />
+
+        <div class="row">
+          <div class="medium-8 columns">
+            <%= yield %>
+          </div>
+          <div class="medium-4 columns">
+            <!-- Liste des sujets récents -->
+          </div>
         </div>
-      </div>
-    </header>
+      </main>
 
-    <% flash.each do |message_type, message| %>
-      <div class="callout <%= message_type %> <%= 'success' if message_type == 'notice' %>">
-        <%= message %>
-      </div>
-    <% end %>
-
-    <br />
-
-    <div class="row">
-      <div class="medium-8 columns">
-        <%= yield %>
-      </div>
-      <div class="medium-4 columns">
-        <!-- Liste des sujets récents -->
-      </div>
+      <footer>
+        <div class="row">        
+          <div class="medium-2 columns">
+            Copyright© <%= Date.today.year %>
+          </div>
+          <div class="medium-6 columns end">
+            <ul class="vertical menu">
+              <li class="menu-text">BestTopics</li>
+              <li><%= link_to "A propos", about_path %></li>
+              <li><%= link_to "Nous contacter", contact_path %></li>
+            </ul>
+          </div>  
+        </div>
+      </footer>
     </div>
   </body>
 </html>
